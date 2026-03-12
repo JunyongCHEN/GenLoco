@@ -12,3 +12,6 @@ output/
 logs/
 tf_model/
 *.pyc
+build/
+dist/
+*.egg-info/

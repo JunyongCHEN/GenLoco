@@ -15,3 +15,10 @@ tf_model/
 build/
 dist/
 *.egg-info/
+output_*
+genloco_*
+genloco.tar
+strain*
+down.sh
+16C02B.zip
+64cFULL.zip

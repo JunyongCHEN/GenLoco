@@ -113,7 +113,7 @@ class ImitationWrapperEnv(object):
       A numpy array contains the initial original concatenated with target
       observations from the reference motion.
     """
-    target_observation = self._task.build_target_obs()
+    target_observation = self._task.build_target_obs(use_phase=self._task._enable_phase_only)
     observation = np.concatenate([original_observation, target_observation], axis=-1)
     return observation
 

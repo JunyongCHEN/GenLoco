@@ -79,7 +79,13 @@ def traj_segment_generator(policy, env, horizon, reward_giver=None, gail=False, 
         # before returning segment [0, T-1] so we get the correct
         # terminal value
         if step > 0 and step % horizon == 0:
-            terminated = ("terminated" not in info) or info["terminated"]
+            if isinstance(info, list):
+                # 如果 info 是列表，说明有多个环境，我们需要提取每一个环境的结束标志
+                terminated = np.array([("terminated" not in i) or i["terminated"] for i in info])
+            else:
+                # 单环境情况
+                terminated = ("terminated" not in info) or info.get("terminated", False)
+            
             if terminated:
                 last_vpred = 0.0
             else:
